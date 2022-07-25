@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belot counter</title>
+    <style>
+body{
+    text-align: center;
+    height: 100vh;
+    background-color: black;
+    color: whitesmoke;
+}
+
+input{
+  width: 98%;
+  height: 100%;
+  background-color: black;
+  text-align: center;
+  color: whitesmoke;
+
+}
+
+.col{
+    float: left;
+    height: 100%;
+}
+
+.col-2{
+    width: 49%;
+    border: 1px solid yellow;
+}
+
+.col-3{
+    width: 33%;
+}
+
+/* .row{
+    height: 8%;
+} */
+  
+/* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+button{
+  background-color: grey;
+  color: whitesmoke;
+  width: 100%;
+  height: 100%;
+}
+.inputs{
+  height: 50px;
+}
+    </style>
+    <script>
+      class Game{
+        constructor(){
+          this.we = [],
+          this.you = []
+        }
+      }
+      let games = [];
+      let gameIndex = 0;
+      games.push(new Game());
+
+      function getTeamResult(team){
+          let score = Array.from(document.querySelectorAll(`#team-${team}`))
+                      .map(e=>e.textContent)
+                      .map(e=>Number(e))
+                      .reduce((a,b)=>a+b,0);
+          document.querySelector(`#score-${team}`).textContent = score;
+          return score;
+      }
+
+      function winGame(team){
+        let teamName = document.querySelector(`#name-${team}`).textContent;
+        setTimeout(() => {
+        if(window.confirm(`Is ${teamName} wins? Do you want start new game?`)){
+          document.querySelector('#scores').innerHTML = '';
+          document.querySelector(`#games-${team}`).textContent = Number(document.querySelector(`#games-${team}`).textContent) + 1;
+          document.querySelector('#score-1').textContent = 0;
+          document.querySelector('#score-2').textContent = 0;
+        }
+        }, 1);
+      }
+
+      function calculate(){
+        const game = games[gameIndex];
+        let wePoints = getTeamResult(1);
+        let youPoints = getTeamResult(2);
+        if(wePoints > 150 && wePoints > youPoints ){
+          winGame(1);
+        }else if(youPoints > 150 && youPoints > wePoints){
+          winGame(2);
+        }
+      }
+      function createCol(team){
+        let col = document.createElement('div');
+        col.classList.add('col','col-2');
+        let value = document.querySelector(`#input-${team}`).value;
+        col.textContent = value == '' ? 0 : value;
+        col.setAttribute('id',`team-${team}`);
+        return col;
+      }
+      function createRow(){
+        let wePoints = document.querySelector(`#input-1`).value;
+        let youPoints = document.querySelector(`#input-2`).value;
+        games[gameIndex].we.push(wePoints);
+        games[gameIndex].you.push(youPoints);
+        let row = document.createElement('div');
+        row.classList.add('row');
+        row.setAttribute('id','score');
+        row.append(createCol(1));
+        row.append(createCol(2));
+        document.querySelector('#scores').append(row);
+        calculate();
+        document.querySelector('#input-1').value = '';
+        document.querySelector('#input-2').value = '';
+        console.log(games[gameIndex]);
+      }
+      function removeRow(){
+        const arr = Array.from(document.querySelectorAll(`#score`));
+        console.log(arr);
+        const last = arr[arr.length - 1];
+        last.parentElement.removeChild(last);
+        setTimeout(() => {}, 10);
+        calculate();
+      }
+    </script>
+</head>
+<body id="body">
+    <div class="row">
+      <div class="col col-2">
+        <div id="name-1">We</div>
+        <div>
+          <span>Games : </span>
+          <span id="games-1" >0</span>
+        </div>
+        <div>
+          <span>Points : </span>
+          <span id="score-1" >0</span>
+        </div>
+        <div style="height: 20px"></div>
+      </div>
+      <div class="col col-2">
+        <div id="name-2">You</div>
+        <div>
+          <span>Games : </span>
+          <span id="games-2" >0</span>
+        </div>
+        <div>
+          <span>Points : </span>
+          <span id="score-2" >0</span>
+        </div>
+        <div style="height: 20px"></div>
+      </div>
+    </div>
+    <div style="height: 20px"></div>
+    <div id="scores"></div>
+    <div class="inputs">
+      <div class="col col-2"><input id="input-1" type="number" placeholder="Enter points"></div> 
+      <div class="col col-2"><input id="input-2" type="number" placeholder="Enter points"></div>
+    </div>
+      <div class="inputs">
+        <div class="col col-2"><button onclick="removeRow()">Back</button></div>
+        <div class="col col-2"><button onclick="createRow()">Enter</button></div>
+      </div>
+</body>
+</html>
+
+
+
+

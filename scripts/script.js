@@ -10,18 +10,12 @@ const rightGames = document.getElementById('rightGames');
 const main = document.getElementById('main');
 const leftContainer = document.getElementById('left');
 const rightContainer = document.getElementById('right');
+const leftName = document.getElementById('leftName');
+const rightName = document.getElementById('rightName');
 
+const leftInput = document.getElementById('leftInput');
+const rightInput = document.getElementById('rightInput');
 
-function getItem(itemName,initialValue){
-    if(localStorage.getItem(itemName) == null){
-        localStorage.setItem(itemName,JSON.stringify(initialValue));
-    }
-    return JSON.parse(localStorage.getItem(itemName));
-}
-
-function saveItem(itemName,item){
-    localStorage.setItem(itemName,JSON.stringify(item));
-}
 
 function checkForWin(leftPoints,rightPoints){
     if((leftPoints > 150 && leftPoints > rightPoints) || (rightPoints > 150 && rightPoints > leftPoints)){
@@ -61,9 +55,9 @@ function renderScores(){
             left.textContent = arr[i];
             right.textContent = arr[i + 1];
         }else{
-            let [leftGames, rightGames] = arr[i].split('-');
-            left.textContent = "Games : " + leftGames; 
-            right.textContent = "Games : " + rightGames;
+            left.textContent = `${GAMES_NAME} : ${getItem('leftGames',0)}`;
+            right.textContent = `${GAMES_NAME} : ${getItem('rightGames',0)}`;
+            row.classList.add('text-red');
         }
         row.appendChild(left);
         row.appendChild(right);
@@ -73,10 +67,14 @@ function renderScores(){
     backBtn.disabled = arr.length - index -2 < 0;
     clearBtn.disabled = arr.length == 0;
     fowardBtn.disabled = index == 0;
-    leftPoints.textContent = 'Игри : ' + getItem('leftPoints',0);
-    rightPoints.textContent = 'Игри : ' + getItem('rightPoints',0);
-    leftGames.textContent = "Точки : " + getItem('leftGames',0);
-    rightGames.textContent = "Точки : " + getItem('rightGames',0);
+    leftPoints.textContent = `${GAMES_NAME} : ${getItem('leftGames',0)}`;
+    rightPoints.textContent = `${GAMES_NAME} : ${getItem('rightGames',0)}`;
+    leftGames.textContent = `${POINTS_NAME} : ${getItem('leftPoints',0)}`;
+    rightGames.textContent = `${POINTS_NAME} : ${getItem('rightPoints',0)}`;
+    leftName.textContent = we;
+    rightName.textContent = you;
+    leftInput.placeholder = INPUT_PLACEHOLDER;
+    rightInput.placeholder = INPUT_PLACEHOLDER;
     window.scrollTo(0, table.offsetHeight);
 }
 
@@ -98,7 +96,6 @@ enterBtn.addEventListener('click',() =>{
         let index = getItem('index',0);
         let arr = getItem('arr',[]);
         arr.splice(arr.length - index,index);
-        console.log(arr);
         saveItem('arr',arr);
         saveItem('index',0);
         let leftInput = getInput('leftInput');
@@ -122,75 +119,26 @@ enterBtn.addEventListener('click',() =>{
     }
 
 })
-
-clearBtn.addEventListener('click',()=>{
-    if(!window.confirm('All recordings will cleared. Are you sure ?')){
-        return;
-    }
-    localStorage.clear();
-    renderScores();
-});
-
-backBtn.addEventListener('click',()=>{
-    let index = getItem('index',0);
-    let arr = getItem('arr',[]);
-    let leftPoints;
-    let rightPoints;
-    if(!((arr[arr.length - index - 1] + '').includes('-'))){
-        leftPoints = Number(getItem('leftPoints',0)) - Number(arr[arr.length - index -2]);
-        rightPoints = Number(getItem('rightPoints',0)) - Number(arr[arr.length - index -1]);
-
-    }else{
-        let points = arr[arr.length - index - 1].split('-');
-        leftPoints = Number(points[0]);
-        rightPoints = Number(points[1]);
-        let leftGames = getItem('leftGames',0);
-        let rightGames = getItem('rightGames',0);
-        if(leftPoints > rightPoints){
-            leftGames--;
-        }else{
-            rightGames--;
-        }
-        saveItem('leftGames',leftGames);
-        saveItem('rightGames',rightGames);
-    }
-    saveItem('leftPoints',leftPoints);
-    saveItem('rightPoints',rightPoints);
-    saveItem('index', Number(index) + 2);
-    renderScores();
-
-});
-
-fowardBtn.addEventListener('click',()=>{
-    let index = getItem('index',0);
-    let arr = getItem('arr',[]);
-    let leftPoints;
-    let rightPoints;
-    if(!((arr[arr.length - index] + '').includes('-'))){
-        leftPoints = Number(getItem('leftPoints',0)) + Number(arr[arr.length - index]);
-        rightPoints = Number(getItem('rightPoints',0)) + Number(arr[arr.length - index + 1]);
-
-    }else{
-        let points = arr[arr.length - index + 1].split('-');
-        leftPoints = Number(points[0]);
-        rightPoints = Number(points[1]);
-        let leftGames = getItem('leftGames',0);
-        let rightGames = getItem('rightGames',0);
-        if(leftPoints > rightPoints){
-            leftGames++;
-        }else{
-            rightGames++;
-        }
-        saveItem('leftGames',leftGames);
-        saveItem('rightGames',rightGames);
-    }
-    saveItem('leftPoints',leftPoints);
-    saveItem('rightPoints',rightPoints);
-    saveItem('index', Number(index) - 2);
-    renderScores();
-});
-
 renderScores();
 
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
 
-
+  console.log(document.getElementById('mytable').querySelectorAll('tr'));

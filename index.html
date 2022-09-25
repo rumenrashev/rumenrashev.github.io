@@ -4,54 +4,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Сметачница за белот</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>    <main id="main">
-        <div id="left" class="split left">
-        </div>
-        <div id="right" class="split right">
-
-        </div>
+    <body>    
+        <header>
+            <table>
+                <tr>
+                    <td class="left">
+                        <button id="mode" onclick="mode()" >Dark</button>
+                    </td>
+                    <td>
+                        <button id="lang" onclick="changeLang()" >Български</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                       <div id="leftName">
+                    </td>
+                    <td>
+                        <div id="rightName"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <button id="clean" onclick="clean()"> &#129529; </button>
+                    </td>
+                    <td>
+                        <button id="foward" onclick="foward()">&rarr;</button>
+                    </td>
+                </tr>
+            </table>
+        </header>
+        <div class="buffer"></div>
     </main>
-    
-        <table id="mytable">        
+        <table id="mytable">
 
-          </table>
-   
-      <div class="buffer"></div>
-      <footer id="footer">
-        <div class="info">
-            <div>Ние</div>
-    </div>
-    <div class="info">
-            <div>Вие</div>
-    </div>
-        <div class="info">
-           <input type="number" placeholder="0" id="leftInput">
-        </div>
-        <div class="info">
-            <input type="number" placeholder="0" id="rightInput">
-    </div>
-    <div class="info">
-            <div id="leftGames">Игри : 0</div>
-        </div>
-    </div>
-    <div class="info">
-            <div id="rightGames">Точки : 0</div>
-    </div>
-        <div class="info">
-            <div id="leftPoints">Игри : 0</div>
-        </div>
-        </div>
-        <div class="info">
-            <div id="rightPoints">Точки : 0</div>
-        </div>
-        <button id="clean"> &#129529; </button>
-        <button id="foward">&rarr;</button>
-        <button id="back">&larr;</button>
-        <button id="enter">&#9166;</button>
+        </table>
+        <div class="buffer"></div>
+    <footer id="footer">
+        <table>
+            <tr>
+                <td class="left">
+                    <input type="number" placeholder="Enter score" id="leftInput">
+                </td>
+                <td>
+                    <input type="number" placeholder="Enter score" id="rightInput">
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <div id="leftGames">Игри : 0</div>
+                </td>
+                <td>
+                    <div id="rightGames">Игри : 0</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <div id="leftPoints">Игри : 0</div>
+                </td>
+                <td>
+                    <div id="rightPoints">Игри : 0</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <button id="back"  onclick="back()">&larr;</button>
+                </td>
+                <td>
+                    <button id="enter">&#9166;</button>
+                </td>
+            </tr>
+        </table>
       </footer>
 </body>
-<script src="script.js"></script>
+<script src="./scripts/common.js"></script>
+<script src="./scripts/script.js"></script>
+<script src="./scripts/clean.js"></script>
+<script src="./scripts/back.js"></script>
+<script src="./scripts/foward.js"></script>
+<script src="./scripts/lang.js"></script>
+<script src="./scripts/mode.js"></script>
 </html>

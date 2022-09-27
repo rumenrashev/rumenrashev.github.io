@@ -1,4 +1,7 @@
 function back(){
+    if(arr.length == 0){
+        return;
+    }
     let index = getItem('index',0);
     let arr = getItem('arr',[]);
     let leftPoints;

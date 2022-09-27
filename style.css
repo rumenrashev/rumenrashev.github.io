@@ -43,14 +43,14 @@ body {
 
   button{
     width: 90%;
-    height: 50px;
+    height: 40px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    border-radius: 5cm;
-    background-color: gray;
-    border: none;
+    /* border-radius: 5cm; */
+    /* background-color: gray; */
+    /* border: none; */
   }
 
   .left {
@@ -100,6 +100,7 @@ body {
 
   .dark-footer{
     background-color: rgb(10, 10, 10);
+    color: white;
   }
 
   tr{
@@ -148,11 +149,8 @@ nav .drop-down li:first-child a:after {
   margin-right: 5px;
 }
 
-/* .item{
-  border-bottom: 1px solid black;
-} */
-
 a:hover {
-  background-color: yellow;
+  background-color: gray;
 }
+
 

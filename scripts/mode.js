@@ -8,6 +8,7 @@ function mode(){
         document.querySelectorAll('.left').forEach(e=> e.classList.add('dark-col'));
         document.querySelectorAll('footer').forEach(e=> e.classList.add('dark-footer'));
         document.querySelectorAll('header').forEach(e=> e.classList.add('dark-footer'));
+        document.querySelectorAll('a').forEach(e=> e.classList.add('dark-footer'));
 
     }else{
         body.classList.remove('dark-body');
@@ -15,6 +16,7 @@ function mode(){
         document.querySelectorAll('.left').forEach(e=> e.classList.remove('dark-col'));
         document.querySelectorAll('footer').forEach(e=> e.classList.remove('dark-footer'));
         document.querySelectorAll('header').forEach(e=> e.classList.remove('dark-footer'));
+        document.querySelectorAll('a').forEach(e=> e.classList.remove('dark-footer'));
     }
     let currentMode = modeBtn.textContent;
     if(currentMode == 'Тъмно'){

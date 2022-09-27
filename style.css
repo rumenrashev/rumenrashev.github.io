@@ -38,17 +38,19 @@ body {
 
   footer {
     bottom: 0px;
-    height: 120px;
+    height: 250px;
   }
 
   button{
     width: 90%;
+    height: 50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     border-radius: 5cm;
     background-color: gray;
+    border: none;
   }
 
   .left {
@@ -56,7 +58,7 @@ body {
   }
 
   .buffer{
-    height: 100px;
+    height: 250px;
     width: 100%;
   }
 
@@ -66,7 +68,7 @@ body {
 
   input{
     width: 90%;
-    height: 80%;
+    height: 50px;
     background-color: whitesmoke;
     text-align: center;
     border: none;
@@ -100,6 +102,57 @@ body {
     background-color: rgb(10, 10, 10);
   }
 
-  /* tr{
-    height: 30px;
-  } */
+  tr{
+    height: 50px;
+  }
+
+
+
+
+nav .drop-down {
+  position: fixed;
+  left: 0;
+  list-style: none; 
+  overflow: hidden;
+  background-color: 	#E8E8E8;
+  font-family: Arial;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  /* -webkit-transition: height 0.3s ease;
+          transition: height 0.3s ease; */
+}
+
+nav .drop-down.closed {
+  height: 50px;
+}
+
+nav .drop-down li {
+ 
+}
+
+nav .drop-down li a {
+  display: block;
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+nav .drop-down li:first-child a:after {
+  content: "\25BC";
+  float: right;
+  margin-left: -30px;
+  margin-right: 5px;
+}
+
+/* .item{
+  border-bottom: 1px solid black;
+} */
+
+a:hover {
+  background-color: yellow;
+}
+

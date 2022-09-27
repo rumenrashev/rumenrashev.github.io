@@ -64,9 +64,9 @@ function renderScores(){
         table.appendChild(row);
     }
     enterBtn.disabled = getInput('leftInput') === 0 && getInput('rightInput').textContent === 0;
-    backBtn.disabled = arr.length - index -2 < 0;
-    clearBtn.disabled = arr.length == 0;
-    fowardBtn.disabled = index == 0;
+    backBtn.hidden = arr.length - index -2 < 0;
+    clearBtn.hidden = arr.length == 0;
+    fowardBtn.hidden = index == 0;
     leftPoints.textContent = `${GAMES_NAME} : ${getItem('leftGames',0)}`;
     rightPoints.textContent = `${GAMES_NAME} : ${getItem('rightGames',0)}`;
     leftGames.textContent = `${POINTS_NAME} : ${getItem('leftPoints',0)}`;

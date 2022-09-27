@@ -6,37 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сметачница за белот</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
     <body>    
-        <header>
-            <table>
-                <tr>
-                    <td class="left">
-                        <button id="mode" onclick="mode()" >Dark</button>
-                    </td>
-                    <td>
-                        <button id="lang" onclick="changeLang()" >Български</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                       <div id="leftName">
-                    </td>
-                    <td>
-                        <div id="rightName"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                        <button id="clean" onclick="clean()"> &#129529; </button>
-                    </td>
-                    <td>
-                        <button id="foward" onclick="foward()">&rarr;</button>
-                    </td>
-                </tr>
-            </table>
-        </header>
-        <div class="buffer"></div>
+            <nav>
+                <ul class="drop-down closed">
+                  <li><a href="#" class="nav-button">Меню</a></li>
+                  <li class="item"><a id="back" onclick="back()">Назад</a></li>
+                  <li class="item"><a id="foward" onclick="back()">Напред</a></li>
+                  <li class="item"><a id="lang" onclick="changeLang()">Български</a></li>
+                  <li class="item"><a id="clean" onclick="clean()">Нова игра</a></li>
+                  <li class="item"><a id="mode" onclick="mode()">Dark</a></li>
+                  
+                </ul>
+              </nav>
+        <div style="height: 55px"></div>
     </main>
         <table id="mytable">
 
@@ -52,6 +36,12 @@
                     <input type="number" placeholder="Enter score" id="rightInput">
                 </td>
             </tr>
+            <td class="left">
+                <div id="leftName">
+             </td>
+             <td>
+                 <div id="rightName"></div>
+             </td>
             <tr>
                 <td class="left">
                     <div id="leftGames">Игри : 0</div>
@@ -68,15 +58,8 @@
                     <div id="rightPoints">Игри : 0</div>
                 </td>
             </tr>
-            <tr>
-                <td class="left">
-                    <button id="back"  onclick="back()">&larr;</button>
-                </td>
-                <td>
-                    <button id="enter">&#9166;</button>
-                </td>
-            </tr>
         </table>
+        <button id="enter">Enter</button>
       </footer>
 </body>
 <script src="./scripts/common.js"></script>
@@ -86,4 +69,18 @@
 <script src="./scripts/foward.js"></script>
 <script src="./scripts/lang.js"></script>
 <script src="./scripts/mode.js"></script>
+<script>
+    
+
+(function() {
+  // Bind Click event to the drop down navigation button
+  document.querySelector('.nav-button').addEventListener('click', function() {
+    /*  Toggle the CSS closed class which reduces the height of the UL thus 
+        hiding all LI apart from the first */
+    this.parentNode.parentNode.classList.toggle('closed')
+  }, false);
+})();
+
+
+</script>
 </html>

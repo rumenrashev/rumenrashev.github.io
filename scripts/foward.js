@@ -1,9 +1,11 @@
 function foward(){
-    if(arr.length == 0){
-        return;
-    }
     let index = getItem('index',0);
     let arr = getItem('arr',[]);
+    if(index == 0){
+        return;
+    }
+    console.log(index);
+    console.log(arr.length);
     let leftPoints;
     let rightPoints;
     if(!((arr[arr.length - index] + '').includes('-'))){

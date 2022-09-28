@@ -63,10 +63,16 @@ function renderScores(){
         row.appendChild(right);
         table.appendChild(row);
     }
-    enterBtn.disabled = getInput('leftInput') === 0 && getInput('rightInput').textContent === 0;
-    backBtn.disabled = arr.length - index -2 < 0;
-    clearBtn.disabled = arr.length == 0;
-    fowardBtn.disabled = index == 0;
+    if(arr.length == 0){
+        backBtn.style = 'display:none;'
+    }else{
+        backBtn.style = '';
+    }
+    if(index == 0){
+        fowardBtn.style = 'display:none;'
+    }else{
+        fowardBtn.style = '';
+    }
     leftPoints.textContent = `${GAMES_NAME} : ${getItem('leftGames',0)}`;
     rightPoints.textContent = `${GAMES_NAME} : ${getItem('rightGames',0)}`;
     leftGames.textContent = `${POINTS_NAME} : ${getItem('leftPoints',0)}`;

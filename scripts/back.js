@@ -1,9 +1,10 @@
 function back(){
+    console.log('here');
+    let index = getItem('index',0);
+    let arr = getItem('arr',[]);
     if(arr.length == 0){
         return;
     }
-    let index = getItem('index',0);
-    let arr = getItem('arr',[]);
     let leftPoints;
     let rightPoints;
     if(!((arr[arr.length - index - 1] + '').includes('-'))){

@@ -4,4 +4,5 @@ function clean(){
     }
     localStorage.clear();
     renderScores();
+    closeDropdown();
 }

@@ -1,8 +1,7 @@
-function back(){
-    console.log('here');
-    let index = getItem('index',0);
-    let arr = getItem('arr',[]);
-    if(arr.length == 0){
+BACK_BTN.addEventListener(CLICK_EVENT,()=>{
+    const arr = getItem('arr',[]);
+    const index =  getItem('index',0);
+    if(arr.length - index < 0){
         return;
     }
     let leftPoints;
@@ -29,4 +28,5 @@ function back(){
     saveItem('rightPoints',rightPoints);
     saveItem('index', Number(index) + 2);
     renderScores();
-}
+    closeDropdown();
+});

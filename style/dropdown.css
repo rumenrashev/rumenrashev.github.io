@@ -1,0 +1,26 @@
+.drop-down {
+    position: fixed;
+    left: 0;
+    list-style: none; 
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+  
+.closed {
+    height: 40px;
+}
+  
+a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+}
+  
+li:first-child a:after {
+    float: right;
+    margin-left: -30px;
+    margin-right: 5px;
+}

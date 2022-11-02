@@ -5,35 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сметачница за белот</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/dropdown.css">
+    <link rel="stylesheet" href="./style/light.css">
 </head>
     <body>    
             <nav>
                 <ul class="drop-down closed">
-                  <li><a href="#" class="nav-button">Меню</a></li>
-                  <li class="item"><a id="back" onclick="back()">Назад</a></li>
-                  <li class="item"><a id="foward" onclick="foward()">Напред</a></li>
-                  <li class="item"><a id="lang" onclick="changeLang()">Български</a></li>
-                  <li class="item"><a id="clean" onclick="clean()">Нова игра</a></li>
-                  <li class="item"><a id="mode" onclick="mode()">Dark</a></li>
-                  
+                  <li><a id="menu-btn">Меню</a></li>
+                  <li><a id="back-btn">Назад</a></li>
+                  <li><a id="foward" onclick="foward()">Напред</a></li>
+                  <li><a id="lang" onclick="changeLang()">Български</a></li>
+                  <li><a id="clean" onclick="clean()">Нова игра</a></li>
+                  <li><a id="mode" onclick="mode()">Dark</a></li>
                 </ul>
               </nav>
-        <div style="height: 55px"></div>
-    </main>
-        <table id="mytable">
+        <div style="height: 40px"></div>
+        
+    <div id="main-content"></div>
 
-        </table>
         <div class="buffer"></div>
     <footer id="footer">
         <table>
             <tr>
                 <td class="left">
-                    <input type="number" placeholder="Enter score" id="leftInput">
+                    <input type="number" placeholder="Enter score" id="leftInput" required min="0" max="200">
                 </td>
                 <td>
-                    <input type="number" placeholder="Enter score" id="rightInput">
+                    <input type="number" required min="0" max="200"placeholder="Enter score" id="rightInput">
                 </td>
             </tr>
             <td class="left">
@@ -59,28 +58,18 @@
                 </td>
             </tr>
         </table>
-        <button id="enter">Enter</button>
+        <button id="enter-btn">Enter</button>
       </footer>
 </body>
+<script src="./scripts/game.js"></script>
+<script src="./scripts/constants.js"></script>
 <script src="./scripts/common.js"></script>
 <script src="./scripts/script.js"></script>
+<script src="./scripts/dropdpown.js"></script>
 <script src="./scripts/clean.js"></script>
 <script src="./scripts/back.js"></script>
 <script src="./scripts/foward.js"></script>
 <script src="./scripts/lang.js"></script>
 <script src="./scripts/mode.js"></script>
-<script>
-    
-
-(function() {
-  // Bind Click event to the drop down navigation button
-  document.querySelector('.nav-button').addEventListener('click', function() {
-    /*  Toggle the CSS closed class which reduces the height of the UL thus 
-        hiding all LI apart from the first */
-    this.parentNode.parentNode.classList.toggle('closed')
-  }, false);
-})();
-
-
-</script>
+<script src="./scripts/enter.js"></script>
 </html>
